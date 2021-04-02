@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>albanian-cities-api</title>
+    <link rel="stylesheet" href="build/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="flex-wrap bg-red-400 py-6 w-full shadow-md md:block flex text-center items-center justify-between">
+        <h1 class="md:p-0 text-4xl text-black-800 pl-10 text-center">albania<b class="text-white">-city-api</b></h1>
+        <div class="md:mt-6 mx-5 w-auto">
+            <span class="mx-2">
+                <a class="github-button" href="https://github.com/911mateo911/albania-cities-api"
+                    data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large"
+                    aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+            </span>
+            <a class="github-button" href="https://github.com/911mateo911/albania-cities-api/issues"
+                data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large"
+                aria-label="Issue ntkme/github-buttons on GitHub">Issue</a>
+            <span class="mx-2">
+                <a class="github-button" href="https://github.com/911mateo911"
+                    data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large"
+                    data-show-count="true" aria-label="Follow @911mateo911 on GitHub">Follow @911mateo011</a>
+            </span>
+        </div>
+    </nav>
+    <h1 class="text-4xl font-cabin text-center m-4">An updated database with all the cities of albania as of 2021.
+    </h1>
+    <h3 class="text-3xl font-open-sans text-center mx-6 pb-6">Get information about cities and regions of albania</h3>
+    <div class="flex px-12 py-6 w-max max-w-full rounded-lg m-auto bg-gray-200 justify-around items-center flex-col">
+        <p class="font-cabin mb-2">Example:</p>
+        <a class="underline sm:text-sm" target="_blank"
+            href="/city?q=ballsh">https://albanian-city-api.herokuapp.com/city?q=ballsh</a>
+    </div>
+    <h3 class="text-3xl font-cabin border-b-2 pb-1 mx-10 mt-6">Usage</h3>
+    <article class="mx-8">
+        <p class="font-open-sans mt-4">This api responds with Json format.It's hosted on firebase and uses cloud
+            firestore as a database.</p>
+        <h3 class="text-2xl font-cabin border-b-2 pb-1 mt-6">Endpoints</h3>
+        <div class="m-auto w-1/2 md:w-full">
+            <h3 class="text-2xl font-cabin my-4">Get all cities</h3>
+            <p class="font-open-sans bg-gray-100 text-red-400 w-max max-w-full">GET https://albanian-city-api.herokuapp.com/cities</p>
+            <p class="font-open-sans mt-4">Response as JSON:</p>
+            <pre class="bg-gray-100 w-max p-4"><code class="font-cabin">[{
+     "name": "Bajram Curri",
+     "district": "Tropoje",
+     "region": "Kukes"
+    },
+    {
+     "region": "Shkoder",
+     "name": "Bajze",
+     "district": "Malesi e madhe"
+    },
+    {
+     "district": "Mallakaster",
+     "region": "Fier",
+     "name": "Ballsh"
+    }]</code></pre>
+        </div>
+    <div class="m-auto w-1/2 md:w-full">
+        <h3 class="text-2xl font-cabin my-4">Get one city</h3>
+        <p class="font-open-sans bg-gray-100 text-red-400 w-max max-w-full">GET https://albanian-city-api.herokuapp.com/city?q={city_name}</p>
+        <p class="font-open-sans mt-4">Response as JSON:</p>
+        <pre class="bg-gray-100 w-max p-4"><code class="font-cabin">{
+ "region": "Fier",
+ "name": "Ballsh",
+ "district": "Mallakaster"
+}</code></pre>
+        </div>
+<div class="m-auto w-1/2 md:w-full">
+    <h3 class="text-2xl font-cabin my-4">Get all regions</h3>
+    <p class="font-open-sans bg-gray-100 text-red-400 w-max max-w-full">GET https://albanian-city-api.herokuapp.com/regions</p>
+    <p class="font-open-sans mt-4">Response as JSON:</p>
+    <pre class="bg-gray-100 w-max p-4"><code class="font-cabin">[{
+ "name": "Berat",
+ "population": 141960,
+ "cities": [
+ "Berat",
+ "Corovode",
+ "Kucove",
+ "Polican",
+ "Ura vajgurore"
+]},
+{
+ "name": "Diber",
+ "population": 137062,
+ "cities": [
+ "Bulqize",
+ "Burrel",
+ "Klos",
+ "Kraste",
+ "Peshkopi",
+ "Ulez"]}]</code></pre>
+        </div>
+<div class="m-auto w-1/2 md:w-full">
+    <h3 class="text-2xl font-cabin my-4">Get one region</h3>
+    <p class="font-open-sans bg-gray-100 text-red-400 w-max max-w-full">GET https://albanian-city-api.herokuapp.com/region?q={region_name}</p>
+    <p class="font-open-sans mt-4">Response as JSON:</p>
+    <pre class="bg-gray-100 w-max sm:w-full p-4"><code class="font-cabin">{
+    "name": "Fier",
+    "population": 312720,
+    "cities": [
+    "Ballsh",
+    "Divjake",
+    "Fier",
+    "Lushnje",
+    "Patos",
+    "Roskovec"]}</code></pre>
+            </div>
+    </article>
+    <footer class="mt-6 bg-gray-700 w-full flex justify-center align-center py-8">
+        <a class="github-button" href="https://github.com/911mateo911"
+            data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large"
+             data-show-count="true" aria-label="Follow @911mateo911 on GitHub">Follow @911mateo011</a>
+    </footer>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+
+</html>
