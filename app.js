@@ -2,8 +2,15 @@ const express = require('express');
 const app = express();
 const admin = require('firebase-admin');
 const serviceAccount = require(__dirname + "/serviceAcc.json");
+const rateLimit = require('express-rate-limit');
 
 app.use(express.static('public'));
+
+const apiLimiter = rateLimit({
+    windowMs: 15*60*1000,
+    max:3,
+    message: "Please dont spam.This is a free api, and clocked to 200 requests per hour"
+})
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -16,7 +23,7 @@ app.get("/", async (req,res)=> {
     res.sendFile(__dirname + "/index.html")
 })
 
-app.get("/city", async (req, res) => {
+app.get("/city",apiLimiter, async (req, res) => {
     const { q } = req.query;
     if (!q) {
         res.send({
@@ -39,7 +46,7 @@ app.get("/city", async (req, res) => {
     }
 })
 
-app.get("/cities", async (req, res) => {
+app.get("/cities",apiLimiter, async (req, res) => {
     try {
         const response = [];
         const allCities = await db.collection('cities').get();
@@ -50,7 +57,7 @@ app.get("/cities", async (req, res) => {
     } catch (e) { console.log(e) }
 })
 
-app.get("/region", async (req, res) => {
+app.get("/region",apiLimiter, async (req, res) => {
     const { q } = req.query
     if (!q) {
         res.send({
@@ -73,7 +80,7 @@ app.get("/region", async (req, res) => {
     }
 })
 
-app.get("/regions", async (req,res) => {
+app.get("/regions",apiLimiter, async (req,res) => {
     try {
         const response = [];
         const allRegions = await db.collection('regions').get();
