@@ -8,7 +8,7 @@ app.use(express.static('public'));
 
 const apiLimiter = rateLimit({
     windowMs: 15*60*1000,
-    max:3,
+    max:200,
     message: "Please dont spam.This is a free api, and clocked to 200 requests per hour"
 })
 
